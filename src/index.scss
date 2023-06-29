@@ -43,9 +43,18 @@ p {
   line-height: 1.75;
 }
 
-input {
+input,
+textarea {
+  color: $primary-text;
+  font-size: 0.9rem;
+  font-weight: 500;
+
   &::placeholder {
     color: $tertiary-text;
+    opacity: 0.9;
+  }
+  &:focus {
+    @include outline();
   }
 }
 button {
@@ -57,4 +66,12 @@ a {
   &:focus {
     @include outline();
   }
+}
+
+// Form Styles
+.form-label {
+  color: $secondary-text;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
 }

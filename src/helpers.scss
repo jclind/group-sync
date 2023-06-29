@@ -9,11 +9,11 @@ $secondary: #ff6c00;
 
 $font-family: 'Montserrat', sans-serif;
 
-$outline: #cccccc;
+$outline: #4096ff;
 
 @mixin outline() {
   outline-color: $outline;
   // outline-offset: -2px;
   outline-style: auto;
-  outline-width: 5px;
+  outline-width: 3px;
 }

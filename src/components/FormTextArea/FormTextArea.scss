@@ -1,0 +1,14 @@
+@import '../../helpers.scss';
+
+.text-area {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  .text-area-field {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+}

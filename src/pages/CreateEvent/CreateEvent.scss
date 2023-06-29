@@ -9,19 +9,16 @@
     font-size: 24px;
     margin-bottom: 20px;
   }
+  section {
+    margin: 1rem 0;
+  }
 
   .create-event-form {
     display: flex;
     flex-direction: column;
 
-    input[type='text'],
-    input[type='date'] {
-      margin-bottom: 10px;
-      padding: 10px;
-      font-size: 16px;
-    }
-
     .button {
+      margin-top: 25px;
       padding: 10px 20px;
       font-size: 18px;
       background-color: $primary;
@@ -33,6 +30,30 @@
       &:hover {
         background-color: darken($primary, 10%);
       }
+    }
+    .add-address-button,
+    .remove-address-button {
+      background: none;
+      width: fit-content;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: $secondary-text;
+      border: none;
+    }
+    .address-autocomplete {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      margin-bottom: 15px;
+    }
+    .date-range-picker-container {
+      display: flex;
+      flex-direction: column;
+      margin-top: 15px;
+    }
+    .test {
     }
 
     .error-message {
