@@ -9,7 +9,8 @@ import FormTextArea from '../../components/FormTextArea/FormTextArea'
 import Autocomplete from 'react-google-autocomplete'
 import dayjs, { Dayjs } from 'dayjs'
 import { RangePickerProps } from 'antd/es/date-picker'
-import { DatePicker, Space } from 'antd'
+import { AddressType } from '../../../types'
+import { DatePicker } from 'antd'
 
 const { RangePicker } = DatePicker
 const disabledDate: RangePickerProps['disabledDate'] = (current: Dayjs) => {
@@ -22,8 +23,9 @@ function CreateEvent() {
   const [eventDescription, setEventDescription] = useState('')
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
+  const [locationName, setLocationName] = useState('')
   const [showAddress, setShowAddress] = useState(false)
-  const [eventAddress, setEventAddress] = useState('')
+  const [eventAddress, setEventAddress] = useState<AddressType | null>(null)
 
   const [error, setError] = useState('')
   const navigate = useNavigate()
@@ -36,8 +38,23 @@ function CreateEvent() {
     }
 
     try {
-      await createEvent(eventName, startDate, endDate)
-      navigate('/dashboard')
+      // Get subset of 'eventAddress' object properties
+      const address: AddressType | null = eventAddress
+        ? (({ address_components, formatted_address }) => ({
+            address_components,
+            formatted_address,
+          }))(eventAddress)
+        : null
+
+      const inviteLink = await createEvent(
+        eventName,
+        eventDescription,
+        locationName,
+        address,
+        startDate,
+        endDate
+      )
+      navigate('/event-created', { state: { inviteLink } })
     } catch (error) {
       setError('Failed to create the event.')
     }
@@ -67,16 +84,23 @@ function CreateEvent() {
             label='Location Name'
             placeholder="Sam's House"
             type='text'
-            value={eventAddress}
-            setValue={setEventAddress}
+            value={locationName}
+            setValue={setLocationName}
           />
           {showAddress ? (
-            <>
+            <div className='address-container'>
               <label className='form-label'>Address</label>
               <Autocomplete
                 apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
                 onPlaceSelected={place => {
-                  console.log(place)
+                  const selectedAddress: AddressType = (({
+                    address_components,
+                    formatted_address,
+                  }) => ({
+                    address_components,
+                    formatted_address,
+                  }))(place)
+                  setEventAddress(selectedAddress)
                 }}
                 options={{
                   types: ['geocode', 'establishment'],
@@ -91,7 +115,7 @@ function CreateEvent() {
               >
                 - Remove Address
               </button>
-            </>
+            </div>
           ) : (
             <button
               type='button'
@@ -107,6 +131,16 @@ function CreateEvent() {
           <RangePicker
             disabledDate={disabledDate}
             style={{ border: '1px solid #ccc', padding: '9px' }}
+            format={'MMM D'}
+            onChange={val => {
+              if (val) {
+                const s = val[0]?.toString()
+                const e = val[1]?.toString()
+                console.log(s, e)
+                s && setStartDate(s)
+                e && setEndDate(e)
+              }
+            }}
           />
         </div>
         {error && <p className='error-message'>{error}</p>}

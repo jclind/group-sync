@@ -1,14 +1,20 @@
 $primary-text: #333333;
 $secondary-text: #777777;
 $tertiary-text: #999999;
-$primary-background: #ffffff;
-$secondary-background: #f5f5f5;
-$tertiary-background: #eeeeee;
+$primary-background: #ebebeb;
+$secondary-background: #e0e0e0;
+$tertiary-background: #cecece;
 $primary: #4a90e2;
 $secondary: #ff6c00;
 
+$white: #ffffff;
+
 $font-family: 'Montserrat', sans-serif;
 
+$success-green: #27c452;
+
+$border-color: #ccc;
+$border-radius: 10px;
 $outline: #4096ff;
 
 @mixin outline() {

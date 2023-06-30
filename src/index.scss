@@ -10,6 +10,7 @@
 
 #root {
   // background: red;
+  height: 100%;
   overflow: hidden;
 }
 html {
@@ -25,6 +26,9 @@ body {
   position: relative;
   width: 100%;
   background: $primary-background;
+}
+.App {
+  height: 100%;
 }
 
 h2 {

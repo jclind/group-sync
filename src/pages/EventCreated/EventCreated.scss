@@ -1,0 +1,98 @@
+@import '../../helpers.scss';
+
+.event-created-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 60%;
+
+  h1 {
+    color: $primary;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.5rem;
+    color: $primary-text;
+    margin-bottom: 10px;
+  }
+
+  .invite-link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .invite-link-label {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .invite-link-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $border-color;
+    width: fit-content;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: $border-radius;
+    background: $white;
+    .icon-container {
+      display: flex; /* Added display property */
+      align-items: center; /* Added align-items property */
+      height: 100%;
+      padding: 0 1rem;
+      border-right: 2px solid $primary-background;
+    }
+    .invite-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.9rem;
+      color: $tertiary-text;
+      font-weight: 500;
+      height: 100%;
+      // padding: 5px 10px;
+      border-radius: 5px;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 0 1rem;
+      margin: 0;
+    }
+    .copy-link-btn {
+      font-size: 1rem;
+
+      height: fit-content;
+      width: fit-content;
+
+      border: none;
+      padding: 0 1rem;
+      height: 90%;
+      width: 100px;
+      background: $primary;
+      border-radius: $border-radius;
+      margin: 0.25rem;
+      color: $white;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .copy-link-btn.copied {
+      background: $success-green;
+    }
+  }
+  .dashboard-link {
+    margin-top: 1rem;
+    color: $primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

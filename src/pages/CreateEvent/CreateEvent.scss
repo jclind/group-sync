@@ -31,6 +31,10 @@
         background-color: darken($primary, 10%);
       }
     }
+    .address-container {
+      display: flex;
+      flex-direction: column;
+    }
     .add-address-button,
     .remove-address-button {
       background: none;
