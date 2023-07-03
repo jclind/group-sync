@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { EventType } from '../../../types'
 import { getEvent } from '../../services/event'
 import './Event.scss'
+import { getMonthAndDay } from '../../util/getMonthAndDay'
 
 const EventPage = () => {
   const { eventID } = useParams()
@@ -32,15 +33,9 @@ const EventPage = () => {
     return <div>Event not found.</div>
   }
 
-  const {
-    name,
-    description,
-    locationName,
-    address,
-    start,
-    end,
-    eventCreatorUID,
-  } = event
+  const { name, description, locationName, address, dates, eventCreatorUID } =
+    event
+  console.log(dates)
 
   return (
     <div className='event-page-container'>
@@ -50,7 +45,10 @@ const EventPage = () => {
       {address && <p>Address: {address.formatted_address}</p>}
       <div className='date-range'>
         <p>Date Range:</p>
-        <span>{start}</span> - <span>{end}</span>
+        {dates.map(val => {
+          console.log(val)
+          return <div>{getMonthAndDay(val)}</div>
+        })}
       </div>
     </div>
   )

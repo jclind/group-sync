@@ -3,8 +3,7 @@ export interface EventType {
   description: string
   locationName: string
   address: AddressType | null
-  start: string
-  end: string
+  dates: string[]
   eventCreatorUID: string
 }
 

@@ -13,8 +13,7 @@ export const createEvent = async (
   description: string,
   locationName: string,
   address: AddressType | null,
-  start: string,
-  end: string
+  dates: string[]
 ): Promise<string | undefined> => {
   const uid = auth?.currentUser?.uid ?? null
   if (uid) {
@@ -23,8 +22,7 @@ export const createEvent = async (
       description,
       locationName,
       address,
-      start,
-      end,
+      dates,
       eventCreatorUID: uid,
     }
 

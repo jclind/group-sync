@@ -16,7 +16,7 @@ import type {
   DateObject,
   Value as DatePickerValue,
 } from 'react-multi-date-picker'
-import { dateObjectToDate } from '../../util/dateObjectToDate'
+import { dateObjectToString } from '../../util/dateObjectToString'
 
 // const { RangePicker } = DatePicker
 const disabledDate: RangePickerProps['disabledDate'] = (current: Dayjs) => {
@@ -39,7 +39,7 @@ function CreateEvent() {
 
   useEffect(() => {
     if (selectedDates instanceof Array) {
-      console.log(dateObjectToDate(selectedDates[0]))
+      console.log(dateObjectToString(selectedDates[0]))
     }
     // console.log(selectedDates)
   }, [selectedDates])
@@ -49,7 +49,7 @@ function CreateEvent() {
 
   const handleCreateEvent = async (e: any) => {
     e.preventDefault()
-    if (!eventName || !startDate || !endDate) {
+    if (!eventName || !Array.isArray(selectedDates)) {
       setError('Please fill in all fields.')
       return
     }
@@ -63,13 +63,21 @@ function CreateEvent() {
           }))(eventAddress)
         : null
 
+      const dates = selectedDates.map(val => {
+        const convertedDate = dateObjectToString(val)
+        console.log(convertedDate)
+        return convertedDate
+      })
+
+      if (!dates)
+        throw new Error('Error processing Dates, please refresh and try again.')
+
       const inviteLink = await createEvent(
         eventName,
         eventDescription,
         locationName,
         address,
-        startDate,
-        endDate
+        dates
       )
       navigate('/event-created', { state: { inviteLink } })
     } catch (error) {
