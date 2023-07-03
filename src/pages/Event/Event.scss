@@ -1,13 +1,60 @@
 @import '../../helpers.scss';
 
 .event-page-container {
-  max-width: 37.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
-  padding: 1.25rem;
+  background: $primary-background;
+  width: 100%;
+  // padding: 1.25rem;
 
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.625rem;
+  .event-container {
+    width: 100%;
+    .event-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 2rem 4rem;
+      width: 100%;
+      // color: $white;
+      border-bottom: 2px solid $primary;
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.625rem;
+        text-transform: capitalize;
+      }
+      .location-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        .icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0.25rem 0;
+          height: 22px;
+          width: 22px;
+          color: $primary;
+        }
+        .location {
+          display: flex;
+          flex-direction: column;
+          .location-name {
+            color: $secondary-text;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin: 0;
+          }
+          .address {
+            margin: 0;
+            font-size: 0.8rem;
+            color: $secondary-text;
+          }
+        }
+      }
+    }
   }
 
   p {
@@ -16,12 +63,84 @@
   }
 
   .date-range {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
     margin-top: 1rem;
     font-size: 1rem;
 
     span {
       display: inline-block;
       margin-right: 0.625rem;
+    }
+    .date-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      border: 1px solid $primary;
+      border-radius: $border-radius;
+      min-width: 300px;
+      min-height: 200px;
+      padding: 2rem 1rem;
+
+      .date {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: $primary;
+      }
+      .day-name {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: $secondary-text;
+      }
+      .options {
+        display: flex;
+        gap: 0.25rem;
+        width: 100%;
+        margin-top: auto;
+
+        button {
+          width: 100%;
+          padding: 0.75rem 0;
+          font-weight: 600;
+        }
+        button.not-available {
+          color: $primary-text;
+          background: $tertiary-background;
+          &:hover {
+            background: darken($tertiary-background, 10%);
+          }
+        }
+        button.available {
+          background: $primary;
+          color: $white;
+          &:hover {
+            background: darken($primary, 10%);
+          }
+        }
+        .icon {
+          height: 25px;
+          width: 25px;
+        }
+        .decline {
+          &:hover {
+            color: $error-red;
+          }
+        }
+        .maybe {
+          &:hover {
+            color: $warning-yellow;
+          }
+        }
+        .accept {
+          &:hover {
+            color: $success-green;
+          }
+        }
+      }
     }
   }
 }

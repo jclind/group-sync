@@ -62,9 +62,20 @@ textarea {
   }
 }
 button {
+  cursor: pointer;
+  border-radius: $border-radius;
   &:focus {
     @include outline();
   }
+}
+.btn-no-styles {
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+  height: fit-content;
+  border: none;
+  color: inherit;
+  background: none;
 }
 a {
   &:focus {

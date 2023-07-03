@@ -46,6 +46,19 @@ export const setUsername = async (username: string, uid: string) => {
     throw new Error(error.message)
   }
 }
+export const getUsername = async (uid: string) => {
+  if (!uid) {
+    throw new Error('User ID not passed, Error.')
+  }
+  try {
+    const usernameDoc = doc(db, 'usernames', uid)
+    const usernameSnapshot = await getDoc(usernameDoc)
+    const usernameData = usernameSnapshot.data()
+    return usernameData?.username
+  } catch (error: any) {
+    throw new Error(error.message)
+  }
+}
 
 export const signUpDefault = async (
   email: string,
