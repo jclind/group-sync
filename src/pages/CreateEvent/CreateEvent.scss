@@ -52,12 +52,21 @@
       resize: vertical;
       margin-bottom: 15px;
     }
+    .date-picker {
+    }
     .date-range-picker-container {
       display: flex;
       flex-direction: column;
       margin-top: 15px;
     }
     .test {
+    }
+    .date-picker-input {
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
     }
 
     .error-message {

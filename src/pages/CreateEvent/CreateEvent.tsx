@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from 'react'
+import React, { SyntheticEvent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createEvent } from '../../services/event'
 
@@ -10,9 +10,15 @@ import Autocomplete from 'react-google-autocomplete'
 import dayjs, { Dayjs } from 'dayjs'
 import { RangePickerProps } from 'antd/es/date-picker'
 import { AddressType } from '../../../types'
-import { DatePicker } from 'antd'
+// import { DatePicker } from 'antd'
+import DatePicker from 'react-multi-date-picker'
+import type {
+  DateObject,
+  Value as DatePickerValue,
+} from 'react-multi-date-picker'
+import { dateObjectToDate } from '../../util/dateObjectToDate'
 
-const { RangePicker } = DatePicker
+// const { RangePicker } = DatePicker
 const disabledDate: RangePickerProps['disabledDate'] = (current: Dayjs) => {
   // Can not select days before today and today
   return current && current < dayjs().subtract(1, 'day').endOf('day')
@@ -26,6 +32,17 @@ function CreateEvent() {
   const [locationName, setLocationName] = useState('')
   const [showAddress, setShowAddress] = useState(false)
   const [eventAddress, setEventAddress] = useState<AddressType | null>(null)
+
+  const [selectedDates, setSelectedDates] = useState<
+    null | DateObject | DateObject[]
+  >(null)
+
+  useEffect(() => {
+    if (selectedDates instanceof Array) {
+      console.log(dateObjectToDate(selectedDates[0]))
+    }
+    // console.log(selectedDates)
+  }, [selectedDates])
 
   const [error, setError] = useState('')
   const navigate = useNavigate()
@@ -128,7 +145,17 @@ function CreateEvent() {
         </section>
         <div className='date-range-picker-container'>
           <div className='form-label'>Select Dates</div>
-          <RangePicker
+          <DatePicker
+            multiple
+            value={selectedDates}
+            onChange={setSelectedDates}
+            format={'MMM D'}
+            inputClass={'date-picker-input'}
+            // render={(val) => {
+            //   return <input onFocus={val.onFocus} />
+            // }}
+          />
+          {/* <RangePicker
             disabledDate={disabledDate}
             style={{ border: '1px solid #ccc', padding: '9px' }}
             format={'MMM D'}
@@ -141,7 +168,7 @@ function CreateEvent() {
                 e && setEndDate(e)
               }
             }}
-          />
+          /> */}
         </div>
         {error && <p className='error-message'>{error}</p>}
         <button type='submit' className='button'>
