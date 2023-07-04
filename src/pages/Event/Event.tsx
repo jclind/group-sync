@@ -12,6 +12,7 @@ import {
 } from 'react-icons/ai'
 import { getUsername } from '../../services/auth'
 import { getDayName } from '../../util/getDayName'
+import DateCard from '../../components/DateCard/DateCard'
 
 const EventPage = () => {
   const { eventID } = useParams()
@@ -79,34 +80,8 @@ const EventPage = () => {
         <div className='date-range-container'>
           <p>Date Range:</p>
           <div className='date-range'>
-            {dates.map(val => {
-              console.log(val)
-              return (
-                <div className='date-card'>
-                  <div className='date'>{getMonthAndDay(val)}</div>
-                  <div className='day-name'>({getDayName(val)})</div>
-                  <div className='options'>
-                    <button className='not-available btn-no-styles'>
-                      Busy
-                    </button>
-                    <button className='available btn-no-styles'>
-                      Available
-                    </button>
-
-                    {/* <button className='btn-no-styles'>
-                      <AiOutlineCloseCircle className='decline icon' />
-                    </button>
-
-                    <button className='btn-no-styles'>
-                      <AiOutlineInfoCircle className='maybe icon' />
-                    </button>
-
-                    <button className='btn-no-styles'>
-                      <AiOutlineCheckCircle className='accept icon' />
-                    </button> */}
-                  </div>
-                </div>
-              )
+            {dates.map(date => {
+              return <DateCard date={date} />
             })}
           </div>
         </div>
