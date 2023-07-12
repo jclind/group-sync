@@ -2,24 +2,28 @@ import React, { useEffect, useState } from 'react'
 import { getMonthAndDay } from '../../util/getMonthAndDay'
 import { getDayName } from '../../util/getDayName'
 import './DateCard.scss'
+import { AvailabilityObjectType, AvailabilityType } from '../../../types'
 
 type DateCardProps = {
   date: string
+  defaultStatus?: AvailabilityType
+  updateAvailability: (data: AvailabilityObjectType) => void
 }
 
-const STATE_STATUS = {
-  NOT_SET: 'NOT_SET',
-  AVAILABLE: 'AVAILABLE',
-  MAYBE: 'MAYBE',
-  BUSY: 'BUSY',
-}
+const DateCard = ({
+  date,
+  defaultStatus,
+  updateAvailability,
+}: DateCardProps) => {
+  const [status, setStatus] = useState<string>('NOT_SET')
 
-const DateCard = ({ date }: DateCardProps) => {
-  const [status, setStatus] = useState<string>(STATE_STATUS.NOT_SET)
-
-  useEffect(() => {
-    console.log(status)
-  }, [status])
+  const handleUpdateStatus = (type: AvailabilityType) => {
+    if (type !== status) {
+      setStatus(type)
+      const availabilityData = { date, type }
+      updateAvailability(availabilityData)
+    }
+  }
 
   return (
     <div className={`date-card ${status}`}>
@@ -29,20 +33,20 @@ const DateCard = ({ date }: DateCardProps) => {
         <div className='main-options'>
           <button
             className='busy btn-no-styles'
-            onClick={() => setStatus(STATE_STATUS.BUSY)}
+            onClick={() => handleUpdateStatus('BUSY')}
           >
             Busy
           </button>
           <button
             className='available btn-no-styles'
-            onClick={() => setStatus(STATE_STATUS.AVAILABLE)}
+            onClick={() => handleUpdateStatus('AVAILABLE')}
           >
             Available
           </button>
         </div>
         <button
           className='maybe btn-no-styles'
-          onClick={() => setStatus(STATE_STATUS.MAYBE)}
+          onClick={() => handleUpdateStatus('MAYBE')}
         >
           maybe
         </button>

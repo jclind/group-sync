@@ -68,6 +68,25 @@ button {
     @include outline();
   }
 }
+.btn-submit {
+  border: 1px solid $primary;
+  padding: 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $secondary-text;
+  width: 100%;
+  margin-top: 1rem;
+  height: 40px;
+  background: $primary-background;
+}
+.btn-submit.active {
+  background: $primary;
+  color: $white;
+
+  &:hover {
+    background: darken($primary, 10%);
+  }
+}
 .btn-no-styles {
   margin: 0;
   padding: 0;

@@ -4,7 +4,16 @@ export interface EventType {
   locationName: string
   address: AddressType | null
   dates: string[]
-  eventCreatorUID: string
+  authorData: {
+    uid: string
+    name: string
+    username: string | undefined
+    email: string | null
+  }
+}
+export type UsersAttendingType = {
+  name: string
+  email?: string
 }
 
 export interface AddressType {
@@ -16,4 +25,24 @@ export interface AddressComponent {
   long_name: string
   short_name: string
   types: string[]
+}
+
+export type UserLocalDataType = {
+  name: string
+  email?: string
+  uid: string
+  availability?: AvailabilityType[]
+}
+
+export type AvailabilityObjectType = {
+  date: string
+  type: 'AVAILABLE' | 'MAYBE' | 'BUSY'
+}
+export type AvailabilityType = 'AVAILABLE' | 'MAYBE' | 'BUSY'
+
+export type PublicUserDataType = {
+  name: string
+  username?: string
+  dateJoined: string
+  hasAccount: boolean
 }

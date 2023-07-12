@@ -1,0 +1,19 @@
+@import '../../helpers.scss';
+
+.content {
+  width: 400px;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+  .modal-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $primary-text;
+    margin-bottom: 1.5rem;
+  }
+  form {
+    width: 100%;
+  }
+  .modal-btn {
+  }
+}

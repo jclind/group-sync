@@ -8,51 +8,89 @@
   margin: 0 auto;
   background: $primary-background;
   width: 100%;
+  max-width: 1000px;
   // padding: 1.25rem;
 
   .event-container {
     width: 100%;
-    .event-details {
+
+    .header {
       display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 2rem 4rem;
-      width: 100%;
-      // color: $white;
+      gap: 2rem;
       border-bottom: 2px solid $primary;
-      h2 {
-        font-size: 1.5rem;
-        margin-bottom: 0.625rem;
-        text-transform: capitalize;
-      }
-      .location-container {
+      width: 100%;
+      padding: 2rem 0;
+      box-sizing: border-box;
+
+      .event-details {
         display: flex;
-        align-items: center;
+        flex-direction: column;
         gap: 0.5rem;
-        .icon {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin: 0.25rem 0;
-          height: 22px;
-          width: 22px;
-          color: $primary;
+        min-width: 40%;
+        background: $white;
+        border-radius: $border-radius;
+        padding: 1rem 1rem;
+        h2 {
+          font-size: 1.5rem;
+          margin-bottom: 0.625rem;
+          text-transform: capitalize;
         }
-        .location {
+        label {
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: $secondary-text;
+          margin-bottom: 0.5rem;
+        }
+        .bottom {
           display: flex;
-          flex-direction: column;
-          .location-name {
-            color: $secondary-text;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin: 0;
+          justify-content: space-between;
+          gap: 0.5rem;
+          margin-top: 1rem;
+          width: 100%;
+
+          .event-creator {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
           }
-          .address {
-            margin: 0;
-            font-size: 0.8rem;
-            color: $secondary-text;
+          .location-container {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            .location-data {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+            }
+            .icon {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 0.25rem 0;
+              height: 22px;
+              width: 22px;
+              color: $primary;
+            }
+            .location {
+              display: flex;
+              flex-direction: column;
+              .location-name {
+                color: $secondary-text;
+                font-weight: 700;
+                font-size: 0.9rem;
+                margin: 0;
+              }
+              .address {
+                margin: 0;
+                font-size: 0.8rem;
+                color: $secondary-text;
+              }
+            }
           }
         }
+      }
+      .users-list {
+        display: flex;
       }
     }
   }

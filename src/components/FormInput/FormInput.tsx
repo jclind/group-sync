@@ -8,6 +8,7 @@ interface FormInputProps {
   setValue: (val: string) => void
   required?: boolean
   placeholder?: string
+  optional?: boolean
 }
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -17,10 +18,13 @@ const FormInput: React.FC<FormInputProps> = ({
   setValue,
   required,
   placeholder,
+  optional,
 }) => {
   return (
     <div className='form-input'>
-      <label className='form-label'>{label}</label>
+      <label className='form-label'>
+        {label} {optional ? <span className='optional'>(optional)</span> : null}
+      </label>
       <input
         type={type}
         value={value}

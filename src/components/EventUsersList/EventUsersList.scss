@@ -1,0 +1,110 @@
+@import '../../helpers.scss';
+
+.event-users-container {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  background: $white;
+  padding: 1rem;
+  border-radius: $border-radius;
+  // max-width: 200px;
+  width: 100%;
+  // max-width: 70%;
+
+  .title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $secondary-text;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .users-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+  }
+  button.view-all-users {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: $secondary-text;
+    margin-top: 0.25rem;
+    padding: 0.25rem;
+    &:hover {
+      color: $primary-text;
+    }
+  }
+}
+.user-card {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  background: $primary-background;
+  padding: 0.5rem;
+  border-radius: $border-radius;
+  width: 100%;
+  max-width: 100px;
+  .profile-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    height: 30px;
+    width: 30px;
+    background: $primary-text;
+    color: $white;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  .name {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: $secondary-text;
+    text-transform: capitalize;
+  }
+}
+// .event-users-container {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   background: $white;
+//   padding: 1.5rem;
+//   border-radius: $border-radius;
+//   max-width: 200px;
+
+//   .title {
+//     font-size: 0.9rem;
+//     font-weight: 600;
+//     color: $secondary-text;
+//     text-transform: uppercase;
+//     margin-bottom: 1rem;
+//   }
+//   .user-card {
+//     display: flex;
+//     gap: 1rem;
+//     align-items: center;
+//     background: $primary-background;
+//     padding: 0.5rem;
+//     border-radius: $border-radius;
+//     width: 100%;
+//     .profile-img {
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       height: 40px;
+//       width: 40px;
+//       background: $primary-text;
+//       color: $white;
+//       border-radius: 50%;
+//       font-weight: 600;
+//       font-size: 1.4rem;
+//     }
+//     .name {
+//       font-size: 1rem;
+//       font-weight: 500;
+//       color: $primary-text;
+//     }
+//   }
+// }

@@ -159,24 +159,7 @@ function CreateEvent() {
             onChange={setSelectedDates}
             format={'MMM D'}
             inputClass={'date-picker-input'}
-            // render={(val) => {
-            //   return <input onFocus={val.onFocus} />
-            // }}
           />
-          {/* <RangePicker
-            disabledDate={disabledDate}
-            style={{ border: '1px solid #ccc', padding: '9px' }}
-            format={'MMM D'}
-            onChange={val => {
-              if (val) {
-                const s = val[0]?.toString()
-                const e = val[1]?.toString()
-                console.log(s, e)
-                s && setStartDate(s)
-                e && setEndDate(e)
-              }
-            }}
-          /> */}
         </div>
         {error && <p className='error-message'>{error}</p>}
         <button type='submit' className='button'>

@@ -5,6 +5,7 @@ import { signUpDefault } from '../../services/auth'
 import { useAuth } from '../../context/AuthContext'
 
 function Signup() {
+  const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -21,7 +22,7 @@ function Signup() {
     }
 
     try {
-      await signUpDefault(email, password, username)
+      await signUpDefault(email, password, name, username)
       // await signUpWithEmailAndPassword(email, password)
       // history.push('/dashboard')
     } catch (error) {
@@ -36,6 +37,13 @@ function Signup() {
     <div className='signup-page'>
       <h2>Sign Up</h2>
       <form className='signup-form' onSubmit={handleSignup}>
+        <input
+          type='text'
+          placeholder='Name'
+          value={name}
+          onChange={e => setName(e.target.value)}
+          required
+        />
         <input
           type='text'
           placeholder='Username'
