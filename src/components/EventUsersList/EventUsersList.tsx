@@ -36,8 +36,8 @@ const EventUsersList = ({ eventID }: EventUsersListProps) => {
   // }, [])
 
   return (
-    <div className='event-users-container'>
-      <div className='title'>People Attending</div>
+    <div className='event-users-container card'>
+      <h3 className='title'>People Attending</h3>
       <div className='users-list'>
         {users &&
           users

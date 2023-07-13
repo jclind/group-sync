@@ -12,7 +12,7 @@
   min-height: 225px;
   padding: 2rem 1rem 1.25rem 1rem;
   background: $white;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: $card-box-shadow;
 
   .date {
     font-size: 1.2rem;

@@ -1,3 +1,5 @@
+import { Timestamp } from 'firebase/firestore'
+
 export interface EventType {
   name: string
   description: string
@@ -45,4 +47,11 @@ export type PublicUserDataType = {
   username?: string
   dateJoined: string
   hasAccount: boolean
+}
+
+export type EventMessageType = {
+  text: string
+  name: string
+  avatarURL: string
+  createdAt: number
 }

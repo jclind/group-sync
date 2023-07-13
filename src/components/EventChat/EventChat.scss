@@ -1,0 +1,193 @@
+@import '../../helpers.scss';
+
+.chat-container {
+  max-width: 90%;
+
+  width: 400px;
+  height: 600px;
+  padding: 0 !important;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+    width: 100%;
+    padding-top: 1rem;
+    // background: $white;
+  }
+  .messages-container {
+    overflow-y: auto;
+
+    height: 100%;
+    width: 100%;
+  }
+  .attached-img-container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 0.5rem;
+    .img-container {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      padding: 1rem;
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
+      border-bottom: 1px solid $border-color;
+
+      margin-top: 1rem;
+      background: $primary-background;
+      box-sizing: border-box;
+      img {
+        max-width: 150px;
+        max-height: 150px;
+        object-fit: contain;
+        border-radius: $border-radius;
+      }
+      button {
+        position: absolute;
+        right: 0.15rem;
+        top: 0.15rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .icon {
+          color: $primary-text;
+          background: $primary-background;
+          border-radius: 50%;
+          padding: 0.25rem;
+        }
+        &:hover {
+          .icon {
+            background: $secondary-background;
+          }
+        }
+      }
+    }
+  }
+
+  .input-container {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 0 0.5rem;
+    .input {
+      position: relative;
+      height: 45px;
+      width: 100%;
+      box-sizing: border-box;
+      input {
+        border: none;
+        height: 100%;
+        width: 100%;
+        border-radius: $border-radius;
+        padding: 0.5rem;
+        box-sizing: border-box;
+        background: $primary-background;
+        resize: none;
+      }
+      button.send {
+        position: absolute;
+        right: 0.25rem;
+        top: 0;
+        bottom: 0;
+        height: 80%;
+        margin: auto;
+        background: $primary;
+        color: $white;
+        border: none;
+        padding: 0 1rem;
+      }
+
+      // button
+    }
+    .input.img-attached {
+      input {
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+      }
+    }
+    .options {
+      display: flex;
+      gap: 0.25rem;
+      padding-top: 0.25rem;
+      input[type='file'] {
+        display: none;
+      }
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 30px;
+
+        .icon {
+          height: 22px;
+          width: 22px;
+          color: $tertiary-text;
+        }
+        &:hover {
+          .icon {
+            color: $secondary-text;
+          }
+        }
+      }
+      // .options {
+      //   display: flex;
+      //   gap: 1rem;
+      //   align-items: center;
+      //   position: absolute;
+      //   bottom: 0.5rem;
+      //   left: 0.5rem;
+      //   right: 0.5rem;
+      //   width: 100%;
+      //   box-sizing: border-box;
+
+      //   button.attachment {
+      //     background: $white;
+      //     padding: 0.25rem;
+      //     width: 30px;
+      //     height: 30px;
+      //     .icon {
+      //       height: 18px;
+      //       width: 18px;
+      //     }
+      //   }
+      //   button.emoji {
+      //     width: 30px;
+      //     height: 30px;
+      //     .icon {
+      //       height: 18px;
+      //       width: 18px;
+      //     }
+      //   }
+      //   .send-btn-container {
+      //     display: flex;
+      //     flex: 1;
+      //     margin-left: auto;
+      //     button.send {
+      //       display: flex;
+      //       justify-content: center;
+      //       align-items: center;
+      //       padding: 0.5rem 1rem;
+      //       margin-left: auto;
+      //       background: $black;
+      //       color: $primary-background;
+      //       font-weight: 600;
+      //       border: none;
+
+      //       .icon {
+      //         padding-left: 0.5rem;
+      //         margin-left: 0.5rem;
+      //         border-left: 1px solid $primary-background;
+      //         height: 15px;
+      //         width: 15px;
+      //       }
+      //     }
+      //   }
+      // }
+    }
+  }
+}

@@ -12,6 +12,7 @@ import {
 import {
   AddressType,
   AvailabilityObjectType,
+  EventMessageType,
   EventType,
   PublicUserDataType,
   UsersAttendingType,
@@ -169,3 +170,21 @@ export const getAttendingUsers = async (
     throw new Error(error.message)
   }
 }
+
+// Event Chat
+export const sendMessage = async (
+  eventID: string,
+  msgData: EventMessageType
+) => {
+  try {
+    const eventDocRef = doc(db, 'events', eventID)
+    const eventMessagesColRef = collection(eventDocRef, 'messages')
+    addDoc(eventMessagesColRef, msgData)
+  } catch (error: any) {
+    throw new Error(error.message)
+  }
+}
+
+// export const setupMessagesListener = async (setMessages: (val: EventMessageType[]) => void) => {
+//     const unsubscrbe
+// }

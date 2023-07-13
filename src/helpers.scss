@@ -9,6 +9,7 @@ $primary-light: #6e9bce;
 $primary-extra-light: #99adc4;
 $secondary: #ff6c00;
 
+$black: #000000;
 $white: #ffffff;
 
 $font-family: 'Montserrat', sans-serif;
@@ -20,6 +21,7 @@ $error-red: #ff0000;
 $border-color: #ccc;
 $border-radius: 10px;
 $outline: #4096ff;
+$card-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
 @mixin outline() {
   outline-color: $outline;

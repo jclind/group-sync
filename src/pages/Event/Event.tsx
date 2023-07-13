@@ -18,6 +18,7 @@ import UserDataModal from '../../components/UserDataModal/UserDataModal'
 import { auth } from '../../services/firestore'
 import EventUsersList from '../../components/EventUsersList/EventUsersList'
 import EventUserCard from '../../components/EventUsersList/EventUserCard'
+import EventChat from '../../components/EventChat/EventChat'
 
 const EventPage = () => {
   const { eventID } = useParams()
@@ -101,7 +102,7 @@ const EventPage = () => {
     <div className='event-page-container'>
       <div className='event-container'>
         <div className='header'>
-          <div className='event-details'>
+          <div className='event-details card'>
             <h2>{name}</h2>
             {/* <p>
             Description: {description} Lorem ipsum dolor sit amet consectetur
@@ -158,6 +159,7 @@ const EventPage = () => {
         setIsOpen={setIsUserDataModalOpen}
         setUserLocalStorage={setUserLocalStorage}
       />
+      <EventChat eventID={eventID!} />
     </div>
   )
 }
