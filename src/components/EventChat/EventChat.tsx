@@ -15,6 +15,7 @@ import { AiOutlinePlus, AiOutlineSmile, AiOutlineClose } from 'react-icons/ai'
 import { BiImageAdd } from 'react-icons/bi'
 import { PiCaretDownBold } from 'react-icons/pi'
 import EmojiPicker from 'emoji-picker-react'
+import { sendMessage } from '../../services/event'
 
 type EventChatProps = {
   eventID: string
@@ -28,7 +29,7 @@ const EventChat = ({ eventID }: EventChatProps) => {
   const [currMessage, setCurrMessage] = useState('')
 
   const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false)
-  const [selectedImg, setSelectedImg] = useState<string | undefined>()
+  const [selectedImg, setSelectedImg] = useState<string | null>(null)
 
   useEffect(() => {
     const eventDocRef = doc(db, 'events', eventID)
@@ -52,6 +53,21 @@ const EventChat = ({ eventID }: EventChatProps) => {
     })
     return () => unsubscribe()
   }, [])
+
+  const handleSendMessage = async () => {
+    if (!currMessage.trim() && !selectedImg) return
+
+    sendMessage(eventID, currMessage, selectedImg).then(() => {
+      setCurrMessage('')
+      setSelectedImg(null)
+    })
+  }
+
+  const handleEnterPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSendMessage()
+    }
+  }
 
   const handleFileSelect = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
@@ -95,9 +111,8 @@ const EventChat = ({ eventID }: EventChatProps) => {
     }
   }
   const removeImg = () => {
-    setSelectedImg(undefined)
+    setSelectedImg(null)
   }
-
   const handleAttachmentClick = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click()
@@ -122,8 +137,10 @@ const EventChat = ({ eventID }: EventChatProps) => {
       )}
       <div className='input-container'>
         <div className={`input ${selectedImg ? 'img-attached' : ''}`}>
-          <input placeholder='Message the group' />
-          <button className='send'>Send</button>
+          <input placeholder='Message the group' onKeyDown={handleEnterPress} />
+          <button className='send' onClick={handleSendMessage}>
+            Send
+          </button>
         </div>
         <div className='options'>
           <input

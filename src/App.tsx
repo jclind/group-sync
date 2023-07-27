@@ -7,6 +7,7 @@ import Signup from './pages/Signup/Signup'
 import CreateEvent from './pages/CreateEvent/CreateEvent'
 import EventCreated from './pages/EventCreated/EventCreated'
 import EventPage from './pages/Event/Event'
+import Pricing from './pages/Pricing/Pricing'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/create-event' element={<CreateEvent />} />
           <Route path='/event-created' element={<EventCreated />} />
           <Route path='/event/:eventID' element={<EventPage />} />
+          <Route path='/pricing' element={<Pricing />} />
         </Routes>
       </AuthProvider>
     </div>

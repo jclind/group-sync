@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from 'firebase/auth'
 import { auth, db } from './firestore'
 import {
@@ -103,6 +104,7 @@ export const signUpDefault = async (
     const isUsernameAvailable = await checkUsernameAvailability(username)
     if (!isUsernameAvailable) throw new Error('Username Taken')
     const userCred = await createUserWithEmailAndPassword(auth, email, password)
+    await updateProfile(userCred.user, { displayName: name })
     await setUsername(username, userCred.user.uid)
     await addUser(userCred.user.uid, name, username, true)
   } catch (error: any) {

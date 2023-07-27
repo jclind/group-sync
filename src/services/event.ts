@@ -1,13 +1,11 @@
 import {
   DocumentSnapshot,
   addDoc,
-  arrayUnion,
   collection,
   doc,
   getDoc,
   getDocs,
   setDoc,
-  updateDoc,
 } from 'firebase/firestore'
 import {
   AddressType,
@@ -19,6 +17,7 @@ import {
 } from '../../types'
 import { auth, db } from './firestore'
 import { getUserData } from './auth'
+import { v4 as uuidv4 } from 'uuid'
 
 const BASE_LINK = 'http://localhost:3000'
 
@@ -171,12 +170,38 @@ export const getAttendingUsers = async (
   }
 }
 
+export const getCurrUserName = (): string => {
+  const authDisplayName = auth?.currentUser?.displayName
+
+  if (authDisplayName) return authDisplayName
+
+  const localUser = JSON.parse(
+    localStorage.getItem('GROUP_SYNC_USER_DATA') || ''
+  )
+  return localUser.name || ''
+}
+
 // Event Chat
 export const sendMessage = async (
   eventID: string,
-  msgData: EventMessageType
+  text: string,
+  attachedIMG: string | null
 ) => {
   try {
+    if (!text && !attachedIMG)
+      throw new Error('Message must have text or attached image')
+    const createdAt = new Date().getTime()
+    const avatarURL: string | null = auth?.currentUser?.photoURL || null
+
+    const msgData: EventMessageType = {
+      id: uuidv4(),
+      text,
+      name: getCurrUserName(),
+      avatarURL,
+      createdAt,
+      attachedIMG,
+    }
+
     const eventDocRef = doc(db, 'events', eventID)
     const eventMessagesColRef = collection(eventDocRef, 'messages')
     addDoc(eventMessagesColRef, msgData)

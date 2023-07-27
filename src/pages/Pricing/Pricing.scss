@@ -1,0 +1,169 @@
+@import '../../helpers.scss';
+
+.pricing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  p {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: $secondary-text;
+  }
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 4rem 0;
+    border-bottom: 1px solid $border-color;
+
+    h1 {
+      font-size: 0.8rem;
+      color: $primary;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      .primary {
+        color: $primary;
+        font-weight: 800;
+      }
+    }
+    p {
+      max-width: 400px;
+      margin-top: 0.5rem;
+    }
+  }
+
+  .price-options {
+    display: flex;
+    gap: 4rem;
+    margin: 5rem 0;
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 300px;
+      .type {
+        background: $secondary-background;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .price-container {
+        display: flex;
+        align-items: flex-end;
+        margin-top: 1rem;
+        .price {
+          font-size: 2.2rem;
+          font-weight: 700;
+        }
+        .price-description {
+          font-size: 0.8rem;
+          color: $secondary-text;
+          padding-bottom: 0.35rem;
+          margin-left: 0.5rem;
+        }
+      }
+      .description {
+        font-size: 0.9rem;
+        color: $secondary-text;
+      }
+      button.select-membership {
+        margin-top: 2rem;
+        width: 100%;
+        background: $primary-background;
+        border: 1px solid $border-color;
+        padding: 0.5rem;
+        color: $tertiary-text;
+        font-weight: 500;
+        font-size: 1rem;
+      }
+      button.primary {
+        background: $primary;
+        color: $white;
+        font-weight: 600;
+      }
+      .features {
+        margin-top: 2rem;
+        h4 {
+          font-weight: 700;
+          font-size: 0.8rem;
+          margin-bottom: 1rem;
+        }
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          list-style: none;
+          li {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: $secondary-text;
+            .check-icon {
+              height: 20px;
+              width: 20px;
+              margin-right: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+    .card.primary {
+      background: $primary;
+      .type {
+        background: $white;
+      }
+      .price-container {
+        .price {
+          color: $white;
+        }
+        .price-description {
+          color: $primary-background;
+        }
+      }
+      .description {
+        color: $primary-background;
+      }
+      button.select-membership {
+        background: $white;
+        color: $primary;
+      }
+      .features {
+        h4 {
+          color: $white;
+        }
+        ul {
+          li {
+            color: $primary-background;
+          }
+        }
+      }
+    }
+  }
+
+  .questions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+    padding: 3rem 0;
+    p {
+      margin-top: 0.5rem;
+      .primary {
+        color: $primary;
+      }
+    }
+  }
+}

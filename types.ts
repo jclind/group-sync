@@ -50,8 +50,10 @@ export type PublicUserDataType = {
 }
 
 export type EventMessageType = {
+  id: string
   text: string
   name: string
-  avatarURL: string
+  avatarURL: string | null
   createdAt: number
+  attachedIMG: string | null
 }

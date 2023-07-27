@@ -3,15 +3,17 @@
 .event-page-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin: 0 auto;
   background: $primary-background;
   width: 100%;
   max-width: 1000px;
+  overflow-y: auto;
+  height: 100%;
+
   // padding: 1.25rem;
 
   .event-container {
+    height: 100%;
     width: 100%;
 
     .header {
